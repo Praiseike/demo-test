@@ -9,12 +9,10 @@ function VideoPlayer({ onLoad }: any) {
     const videoRef2 = useRef<HTMLVideoElement | null>(null);
 
     useEffect(() => {
-        if (showFirstVideo) {
-            onLoad(videoRef1)
-        } else {
-            onLoad(videoRef2)
-        }
-        // onLoad(videoRef1);
+        const ref = showFirstVideo ? videoRef1 : videoRef2;
+        if (ref.current)
+            ref.current.currentTime = 0;
+        onLoad(ref);
     }, [showFirstVideo])
 
     const toggleVideos = () => {
