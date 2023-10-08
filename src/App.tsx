@@ -1,38 +1,6 @@
 import './App.css'
-import video1 from './assets/video-1.mp4';
-import video2 from './assets/video-2.mp4';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import VideoPlayer from './videoPlayer';
-
-function Step({ video }: { video: string }) {
-  return (
-    <video src={video} autoPlay className='w-full' />
-  );
-}
-
-function DemoStep(props: any) {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // Set a timeout to trigger the fade-in after a delay
-    const timeout = setTimeout(() => {
-      setIsVisible(true);
-    }, props.delay);
-
-    // Clear the timeout when the component unmounts
-    return () => clearTimeout(timeout);
-  }, [props.delay]);
-
-  return (
-    <div className={`fadeInOut ${isVisible ? 'show' : ''}`}>
-      {props.content}
-    </div>
-  );
-}
-
-const videos = [
-  video1, video2
-]
 
 
 function App() {
